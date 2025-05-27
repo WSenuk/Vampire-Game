@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  body {
+    background: url('./images/backgroundindex.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Pirata One', 'Courier New', Courier, monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 1em;
+    background: rgb(0, 0, 0);
+    font-size: 2em;
+    color: #ffffff;
+    text-shadow: 0 0 0.625em crimson, 0 0 1.25em darkred;
+  }
+  
+  .game-title {
+    font-family: 'UnifrakturCook', 'Pirata One', 'Courier New', Courier, monospace;
+    font-size: 2em;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-shadow: 0 0 0.625em crimson, 0 0 1.25em darkred;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 2em;
+    position: relative;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 2em;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5em;
+    position: absolute;
+    top: 50%;
+    left: 2em;
+    transform: translateY(-50%);
+  }
+  
+  .menu-button {
+    font-weight: bold;
+    background: none;
+    color: #eee;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Pirata One', 'Courier New', Courier, monospace;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 0.6em;
+  }
+  
+  .menu-button:hover {
+    color: crimson;
+    text-shadow: 0 0 0.5em crimson, 0 0 1em crimson;
+  }
+  
+  .start-button {
+    font-size: 7em;
+  }
+  
+  .highscore-button {
+    font-size: 3em;
+  }
+  
+  /* NEW: layout for the two intro boxes */
+  .info-sections {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4em;
+    flex-wrap: nowrap;
+    margin-top: 3em;
+  }
+  
+  /* Boxes */
+  .intro {
+    text-align: left;
+    max-width: 40em;
+    width: 40em;
+    padding: 2em;
+    background: rgb(0, 0, 0);
+    border: 0.125em solid crimson;
+    border-radius: 0.5em;
+    box-shadow: 0 0 2em crimson;
+    font-size: 1.4em;
+    color: #ffffff;
+  }
+  
+  .intro-title {
+    margin-bottom: 1em;
+    font-size: 2em;
+    color: #ffffff;
+    text-shadow: 0 0 0.5em red;
+    text-align: center;
+  }
+  
+  .intro-text {
+    margin-top: 1em;
+    line-height: 1.8em;
+  }
+  
+  .intro-text p {
+    margin-bottom: 1em;
+  }
+  
+  .intro-text ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+  }
+  
+  .intro-text li {
+    margin-bottom: 0.8em;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 1em;
+    font-size: 1em;
+    background: rgba(0, 0, 0, 0.6);
+    color: crimson;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 0.3125em red;
+  }
+  
+  .game-scene {
+    width: 80%;
+    max-width: 800px;
+    border: 0.2em solid crimson;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1.5em crimson;
+  }
+    
+  .result-message {
+    font-size: 2em;
+    margin-top: 0.5em;
+    text-align: center;
+    font-family: 'Pirata One', 'Courier New', Courier, monospace;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .result-message.success {
+    color: #00ff66;
+    text-shadow: 0 0 0.5em lime, 0 0 1em green;
+  }
+  
+  .result-message.fail {
+    color: crimson;
+    text-shadow: 0 0 0.5em red, 0 0 1.5em darkred;
+  }
+
+
+#death-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  opacity: 0;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+
+.kill-counter {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  font-size: 1.2em;
+  color: white;
+  font-family: 'Pirata One', 'Courier New', Courier, monospace;
+  text-shadow: 0 0 0.3em crimson;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+  max-width: 800px;
+}
+
+#scene {
+  width: 100%;
+  max-width: 600px;
+  border: 3px solid crimson;
+  border-radius: 10px;
+  box-shadow: 0 0 20px crimson;
+}
+
+.text-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+}
+
+#instruction {
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  text-shadow: 0 0 5px red;
+  font-family: 'Pirata One', 'Courier New', Courier, monospace;
+}
+
+#result {
+  font-size: 1.3em;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 5px crimson;
+}
+
+  @media (max-width: 1000px) {
+    .info-sections {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
